@@ -2,8 +2,7 @@ import React, {useState} from 'react'
 
 function Calculator_Keypad() {
   let temp = []; //Temporary Array
-  let secondArr = []; //Number Array]
-  let popArr = []; //Pop Array
+  let secondArr = []; //Number Array
   let i = 0; //Iterative Variable
   let temporaryVar = [];
 
@@ -36,13 +35,15 @@ function Calculator_Keypad() {
           alert("Syntax ERROR");
         }
     } else if(props === 'backspace'){
-        if(arr.length === 0){
+        temporaryVar = arr;
+        setArr([]);
+        if(temporaryVar.length === 0){
           alert("Nothing to clear");
         } else{
-            arr.pop();
-            console.log("The Array After poping is: "+ arr);
+            temporaryVar.pop();
+            console.log("The Array After poping is: "+ temporaryVar);
+            setArr(temporaryVar);
         }
-        setArr(arr);
     } else if(props === 'clear'){
       if(arr.length === 0){
         alert("Nothing to clear");
@@ -50,8 +51,6 @@ function Calculator_Keypad() {
         setArr([]);  
       }
     } else if(props === '='){
-        // temporaryVar.push('=');
-        // setArr(arr => [...arr, temporaryVar]);
         console.log("Second Array going to button pressed is: "+secondArr);
         if(temp.length === 0){
           ButtonPressed(arr);
@@ -62,7 +61,10 @@ function Calculator_Keypad() {
         }
     }
 
-    setArr(arr => [...arr, temporaryVar]);
+    if(props !== 'backspace'){
+      console.log("I am in Last of the function");
+      setArr(arr => [...arr, temporaryVar]);
+    }
   }
 
 

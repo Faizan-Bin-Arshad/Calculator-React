@@ -7,8 +7,6 @@ function App() {
   return (
     <>
     <Navbar heading='Calculator'/>
-    {/* <Text_Area  secondArr={secondArr}/> */}
-    {/* <Calculator_Keypad DefaultArray={DefaultArray}/> */}
     <Calculator_Keypad/>
     </>
   );
