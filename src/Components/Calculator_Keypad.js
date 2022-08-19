@@ -24,7 +24,6 @@ function Calculator_Keypad() {
             temp = [];
           }
           secondArr.push(props);
-          console.log("Second Array filling: "+secondArr);
           temporaryVar = temporaryVar + props;//Display
         } else if(temp === '+' || temp === '-'){
           temp = props + temp;
@@ -35,14 +34,11 @@ function Calculator_Keypad() {
           alert("Syntax ERROR");
         }
     } else if(props === 'backspace'){
-        temporaryVar = arr;
-        setArr([]);
-        if(temporaryVar.length === 0){
+        if(arr.length === 0){
           alert("Nothing to clear");
         } else{
-            temporaryVar.pop();
-            console.log("The Array After poping is: "+ temporaryVar);
-            setArr(temporaryVar);
+            temporaryVar = arr.pop();
+            setArr(arr.filter(item => item.arr !== temporaryVar));
         }
     } else if(props === 'clear'){
       if(arr.length === 0){
@@ -51,7 +47,6 @@ function Calculator_Keypad() {
         setArr([]);  
       }
     } else if(props === '='){
-        console.log("Second Array going to button pressed is: "+secondArr);
         if(temp.length === 0){
           ButtonPressed(arr);
         } else{
@@ -62,7 +57,6 @@ function Calculator_Keypad() {
     }
 
     if(props !== 'backspace'){
-      console.log("I am in Last of the function");
       setArr(arr => [...arr, temporaryVar]);
     }
   }
@@ -79,8 +73,7 @@ function Calculator_Keypad() {
     let total = 0;
     let x = 0;
     let totalArr = [];
-    console.log("I am in ButtonPressed");
-    console.log(props.length);
+
     for (let index = 0; index < props.length; index++) {
       if(props[index] === '+' || props[index] === '-' || props[index] === '*' || props[index] === '/'){
         if(duplicateArr.length === 0){
@@ -95,7 +88,6 @@ function Calculator_Keypad() {
      
     for (let index = 0; index < props.length; index++) {
       if(isNaN(numberArr[index])){
-        console.log("Number Index is: "+numberArr[index]);
         if(duplicateArr[x] === '+'){
           if(totalArr.length === 0){
               count_plus = numberArr[index-1] + numberArr[index+1];
@@ -105,7 +97,6 @@ function Calculator_Keypad() {
             count_plus = p + numberArr[index+1];
             totalArr.push(count_plus);
           }
-          console.log("I am in addition: "+count_plus);
           x++;
         }
         else if(duplicateArr[x] === '-'){
@@ -113,12 +104,10 @@ function Calculator_Keypad() {
             count_minus = numberArr[index-1] - numberArr[index+1];
             totalArr.push(count_minus);
           } else{
-            console.log("I am in Else statement of Subtraction"+ totalArr.slice(-1));
             let l = totalArr.pop();
             count_minus = l - numberArr[index+1];
             totalArr.push(count_minus);
           }
-          console.log("I am in subtraction: "+count_minus);
           x++;
         }
         else if(duplicateArr[x] === '*'){
@@ -130,7 +119,6 @@ function Calculator_Keypad() {
             count_multiply = m * numberArr[index+1];
             totalArr.push(count_multiply);
           }
-          console.log("I am in multiplication: "+count_multiply);
           x++;
         }
         else if(duplicateArr[x] === '/'){
@@ -142,7 +130,6 @@ function Calculator_Keypad() {
             count_divide = d / numberArr[index+1];
             totalArr.push(count_divide);
           }
-          console.log("I am in division: "+count_divide);
           x++;
         }
       }
@@ -154,6 +141,7 @@ function Calculator_Keypad() {
   }
 
 
+  //Array React Hook
   const [arr, setArr] = useState([]);
 
   return (
