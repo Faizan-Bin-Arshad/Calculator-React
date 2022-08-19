@@ -137,7 +137,6 @@ function Calculator_Keypad() {
      
     total = totalArr;
     setArr(total);
-    console.log(total);
   }
 
 
@@ -146,31 +145,33 @@ function Calculator_Keypad() {
 
   return (
     <>
-    <div className='container' style={{border: '5px solid black',paddingTop: '10vh',width: '100vh',marginTop: '5vh',backgroundColor: '#98d3d6'}}>
-      <div className='container' style={{paddingLeft: '5vh'}}>
-        <div style={{width:'40vw',height:'20vh',border: '5px solid black',padding: '10vh',backgroundColor: 'white'}}>{arr}</div>
-        <div style={{paddingTop: '5vh'}}>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'1'}>1</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'2'}>2</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'3'}>3</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'/'}>/</button>
+    <div className='container' style={{border: '1px solid #f9efdd',paddingTop: '10vh',width: '29vw',height: '70vh',marginTop: '5vh',backgroundColor: '#f9efdd'}}>
+      <div className='container' style={{paddingLeft: '1vw',paddingTop: '0vh'}}>
+        <div style={{textAlign: 'end',width:'25vw',height:'15vh',border: '1px solid white',backgroundColor: '#eafaff'}}>{arr}</div>
+        <div style={{paddingTop: '2vh'}}>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'1'}>1</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'2'}>2</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'3'}>3</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'/'}>/</button>
         <br/>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'4'}>4</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'5'}>5</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'6'}>6</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'*'}>*</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'4'}>4</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'5'}>5</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'6'}>6</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'*'}>x</button>
         <br/>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'7'}>7</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'8'}>8</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'9'}>9</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'-'}>-</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'7'}>7</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'8'}>8</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'9'}>9</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'-'}>-</button>
         <br/>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'0'}>0</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'backspace'}>DEL</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'+'}>+</button>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vw'}} onClick={e => DefaultArray(e.target.value)} value={'='}>=</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'backspace'}>DEL</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'0'}>0</button>
+        <button className="btn btn-danger my-2 mx-2" style={{width:'5vw',fontWeight: 'bold'}} onClick={e => DefaultArray(e.target.value)} value={'='}>=</button>
+        <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'+'}>+</button>
         <br/>
-        <button className="btn btn-primary my-2 mx-2" style={{width:'9vh'}} onClick={e => DefaultArray(e.target.value)} value={'clear'}>C</button>
+        <div className='container'  style={{paddingLeft: '0vw'}}>
+          <button className="btn btn-primary my-2 mx-2" style={{width: '23.5vw',fontWeight: 'bold',backgroundColor: '#5acc59'}} onClick={e => DefaultArray(e.target.value)} value={'clear'}>C</button>
+        </div>
         </div>
       </div>  
     </div>
