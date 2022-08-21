@@ -65,15 +65,19 @@ function Calculator_Keypad() {
   //ButtonPressed Function Starts here----------
   const ButtonPressed = (props)=>{
     let duplicateArr = [];
-    let numberArr = [];
+    let finalNumArr = [];
     let count_plus = 0;
     let count_minus = 0;
     let count_multiply = 0;
     let count_divide = 0;
     let total = 0;
+    let d = 0;
     let x = 0;
+    let z = 0;
     let totalArr = [];
+    var iterativeVar;
 
+    //For filling Operator Array
     for (let index = 0; index < props.length; index++) {
       if(props[index] === '+' || props[index] === '-' || props[index] === '*' || props[index] === '/'){
         if(duplicateArr.length === 0){
@@ -83,52 +87,87 @@ function Calculator_Keypad() {
         }
       }
     }
-  
-    numberArr = props.map(Number);
-     
-    for (let index = 0; index < props.length; index++) {
-      if(isNaN(numberArr[index])){
+
+    //For filling Final Number array
+    for (let n = 0; n < props.length; n++) {
+      if(props[n] === '+' || props[n] === '-' || props[n] === '*' || props[n] === '/'){
+        z++;
+        finalNumArr[z] = " ";
+        z++;
+        finalNumArr[z] = [];
+      } else{
+        if(finalNumArr.length === 0){
+          finalNumArr[z] = props[n];
+        } else{
+          finalNumArr[z] = finalNumArr[z] + props[n];
+        }
+      }
+      finalNumArr[z+1] = [];
+    }
+    finalNumArr.pop();
+
+    //For filling Full array
+    for (let index = 0; index < finalNumArr.length; index++) {
+      if(finalNumArr[index] === " "){
+        finalNumArr[index] = duplicateArr[d];
+        d++;
+      }
+    }
+    finalNumArr =  finalNumArr.map(Number);
+    iterativeVar = finalNumArr.length;
+
+    //Calculation starts here
+    for (let index = 0; index < iterativeVar; index++) {
+      if(isNaN(finalNumArr[index])){
         if(duplicateArr[x] === '+'){
           if(totalArr.length === 0){
-              count_plus = numberArr[index-1] + numberArr[index+1];
+              count_plus = finalNumArr[index-1] + finalNumArr[index+1];
               totalArr.push(count_plus);
           } else{
             let p = totalArr.pop();
-            count_plus = p + numberArr[index+1];
+            count_plus = p + finalNumArr[index+1];
             totalArr.push(count_plus);
           }
           x++;
         }
         else if(duplicateArr[x] === '-'){
           if(totalArr.length === 0){
-            count_minus = numberArr[index-1] - numberArr[index+1];
+            count_minus = finalNumArr[index-1] - finalNumArr[index+1];
             totalArr.push(count_minus);
           } else{
             let l = totalArr.pop();
-            count_minus = l - numberArr[index+1];
+            count_minus = l - finalNumArr[index+1];
             totalArr.push(count_minus);
           }
           x++;
         }
         else if(duplicateArr[x] === '*'){
           if(totalArr.length === 0){
-            count_multiply = numberArr[index-1] * numberArr[index+1];
+            count_multiply = finalNumArr[index-1] * finalNumArr[index+1];
             totalArr.push(count_multiply);
           }else{
             let m = totalArr.pop();
-            count_multiply = m * numberArr[index+1];
+            count_multiply = m * finalNumArr[index+1];
             totalArr.push(count_multiply);
           }
           x++;
         }
         else if(duplicateArr[x] === '/'){
           if(totalArr.length === 0){
-            count_divide = numberArr[index-1] / numberArr[index+1];
-            totalArr.push(count_divide);
+            if(finalNumArr[index-1] === 0 || finalNumArr[index+1] === 0){
+              alert("Math ERROR");
+            }else{
+              count_divide = finalNumArr[index-1] / finalNumArr[index+1];
+              totalArr.push(count_divide);
+            }
           } else{
             let d = totalArr.pop();
-            count_divide = d / numberArr[index+1];
-            totalArr.push(count_divide);
+            if(d === 0 || finalNumArr[index+1] === 0){
+              alert("Math ERROR");
+            } else{
+              count_divide = d / finalNumArr[index+1];
+              totalArr.push(count_divide);
+            }
           }
           x++;
         }
