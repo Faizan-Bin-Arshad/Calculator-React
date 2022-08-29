@@ -186,6 +186,7 @@ function Calculator_Keypad() {
     <>
     <div className='container' style={{border: '1px solid #f9efdd',paddingTop: '10vh',width: '29vw',height: '70vh',marginTop: '5vh',backgroundColor: '#f9efdd'}}>
       <div className='container' style={{paddingLeft: '1vw',paddingTop: '0vh'}}>
+        <h1>React Calculator</h1>
         <div style={{textAlign: 'end',width:'25vw',height:'15vh',border: '1px solid white',backgroundColor: '#eafaff'}}>{arr}</div>
         <div style={{paddingTop: '2vh'}}>
         <button className="btn btn-primary my-2 mx-2" style={{width:'5vw',backgroundColor: '#a6abaa'}} onClick={e => DefaultArray(e.target.value)} value={'1'}>1</button>
