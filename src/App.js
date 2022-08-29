@@ -6,7 +6,7 @@ import React from 'react'
 function App() {
   return (
     <>
-    <Navbar heading='Calculator'/>
+    <Navbar heading='React-Calculator'/>
     <Calculator_Keypad/>
     </>
   );
